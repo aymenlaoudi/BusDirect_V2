@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BusDirect</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="src/output.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <header class="bg-white shadow-sm sticky top-0 z-10 ">
+        <section class="mx-auto p-4 flex justify-between items-center">
+            <div class="flex gap-2 items-center">
+                <img src="img/logo.png" alt="logo" class="w-[50px] h-[40px]">
+                <h1 class="text-xl font-bold text-sky-900">
+                    <a href="#bus_direct">BusDirect</a>
+                </h1>
+            </div>
+            <nav class="flex gap-5 items-center">
+                <a class="text-l font-medium text-cyan-700 hover:text-sky-900" href="#reservation">
+                    Reservation
+                </a>
+
+                <a class="text-2xl" href="#ticket" aria-label="Panier">
+                    🛒
+                </a>
+            </nav>
+
+        </section>
+    </header>
+    <main>
+    <section class="grid grid-cols-4 1fr_1fr_1fr_1fr gap-4 mx-4 my-4">
+        <div class="flex shadow-xl w-full rounded-xl gap-3 p-4 flex-wrap flex-col bg-white shadow-sm p-4 pb-7" id="trajets">
+            <span class="text-sm text-gray-900 p-6">Trajets</span>
+        </div>
+        <div class="flex shadow-xl w-full rounded-xl gap-3 p-4 bg-white shadow-sm pb-7" id="num_passagers">
+            <span class="text-sm text-gray-900 p-6">Le nombre de passagers</span>
+        </div>
+        <div class="flex shadow-xl w-full rounded-xl gap-3 p-4 bg-white shadow-sm pb-7" id="recette">
+            <span class="text-sm text-gray-900 p-6">La recette totale</span>
+        </div>
+        <div class="flex shadow-xl w-full rounded-xl gap-3 p-4 bg-white shadow-sm pb-7" id="trajets_complete">
+            <span class="text-sm text-gray-900 p-6">Les trajets complet</span>
+        </div>
+    </section>
+    <section class="flex justify-end gap-6 mr-10 items-center">
+        <div>
+            <select 
+            name="tries" id="tries" class="w-[300px] h-12 border-1 rounded-2xl border-gray-300 cursor-pointer">
+                <option value=""></option>
+            </select>
+        </div>
+        <div>
+            <input 
+                type="search"
+                id="search"
+                class="w-[400px] h-12 border-2 border-gray-300 rounded-2xl text-center font-semibold text-l"
+                placeholder="entre la ville de depart">
+        </div>
+        <button type="button" class="w-[100px] h-12 border-2 border-black rounded-2xl border-gray-300 bg-blue-200 cursor-pointer hover:bg-white">Recherche</button>
+    </section>
+    <section class="grid grid-cols-3 grid-rows-3 1fr_1fr_1fr gap-4 mx-4 my-4">
+        <div class="shadow-xl w-full rounded-xl gap-3 p-4 bg-white shadow-sm pb-7"></div>
+        <div class="shadow-xl w-full rounded-xl gap-3 p-4 bg-white shadow-sm pb-7"></div>
+        <div class="shadow-xl w-full rounded-xl gap-3 p-4 bg-white shadow-sm pb-7"></div>
+        <div class="shadow-xl w-full rounded-xl gap-3 p-4 bg-white shadow-sm pb-7"></div>
+        <div class="shadow-xl w-full rounded-xl gap-3 p-4 bg-white shadow-sm pb-7"></div>
+        <div class="shadow-xl w-full rounded-xl gap-3 p-4 bg-white shadow-sm pb-7"></div>
+    </section>
+    </main>
+    <script src="js/script.js"></script>
+</body>
+
+</html>
