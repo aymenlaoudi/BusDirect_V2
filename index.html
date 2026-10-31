@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BusDirect</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css">
     <link href="src/output.css" rel="stylesheet">
 </head>
 
@@ -35,16 +34,16 @@
     <main>
     <section class="grid grid-cols-4 1fr_1fr_1fr_1fr gap-4 mx-4 my-4">
         <div class="flex shadow-xl w-full rounded-xl gap-3 p-4 flex-wrap flex-col bg-white shadow-sm p-4 pb-7" id="trajets">
-            <span class="text-sm text-gray-900 p-6">Trajets</span>
+            <span class="text-sm text-gray-900 font-semibold">Trajets</span>
         </div>
-        <div class="flex shadow-xl w-full rounded-xl gap-3 p-4 bg-white shadow-sm pb-7" id="num_passagers">
-            <span class="text-sm text-gray-900 p-6">Le nombre de passagers</span>
+        <div class="flex shadow-xl w-full rounded-xl gap-3 p-4 flex-wrap flex-col bg-white shadow-sm pb-7" id="num_passagers">
+            <span class="text-sm text-gray-900 font-semibold">Le nombre de passagers</span>
         </div>
-        <div class="flex shadow-xl w-full rounded-xl gap-3 p-4 bg-white shadow-sm pb-7" id="recette">
-            <span class="text-sm text-gray-900 p-6">La recette totale</span>
+        <div class="flex shadow-xl w-full rounded-xl gap-3 p-4 flex-wrap flex-col bg-white shadow-sm pb-7" id="recette">
+            <span class="text-sm text-gray-900 font-semibold">La recette totale</span>
         </div>
-        <div class="flex shadow-xl w-full rounded-xl gap-3 p-4 bg-white shadow-sm pb-7" id="trajets_complete">
-            <span class="text-sm text-gray-900 p-6">Les trajets complet</span>
+        <div class="flex shadow-xl w-full rounded-xl gap-3 p-4 flex-wrap flex-col bg-white shadow-sm pb-7" id="trajets_complete">
+            <span class="text-sm text-gray-900 font-semibold">Les trajets complet</span>
         </div>
     </section>
     <section class="search gap-6 mx-4 my-4">
@@ -63,23 +62,17 @@
         </div>
         <button type="button" class="h-12 border-2 border-black rounded-2xl border-gray-300 bg-blue-200 cursor-pointer hover:bg-white">Recherche</button>
     </section>
-    <section class="grid grid-cols-3 grid-rows-3 gap-4 mx-4 my-4">
-        <div class="shadow-xl w-full rounded-xl gap-3 p-4 bg-white shadow-sm pb-7"></div>
-        <div class="shadow-xl w-full rounded-xl gap-3 p-4 bg-white shadow-sm pb-7"></div>
-        <div class="shadow-xl w-full rounded-xl gap-3 p-4 bg-white shadow-sm pb-7"></div>
-        <div class="shadow-xl w-full rounded-xl gap-3 p-4 bg-white shadow-sm pb-7"></div>
-        <div class="shadow-xl w-full rounded-xl gap-3 p-4 bg-white shadow-sm pb-7"></div>
-        <div class="shadow-xl w-full rounded-xl gap-3 p-4 bg-white shadow-sm pb-7"></div>
+    <section class="grid grid-cols-3 grid-rows-2 gap-4 mx-4 my-4" id="AllCards">
+        <!-- <div class="shadow-xl w-full rounded-xl gap-3 p-4 bg-white shadow-sm pb-7" id="card"></div> -->
     </section>
     <section class="flex justify-center gap-2">
-        <button class="w-10 h-10 border-1 rounded-xl bg-white hover:bg-blue-500"><i class="fa-solid fa-chevron-left"></i></button>
         <button type="button" class="w-10 h-10 border-1 rounded-xl bg-white hover:bg-blue-500">1</button>
         <button type="button" class="w-10 h-10 border-1 rounded-xl bg-white hover:bg-blue-500">2</button>
         <button type="button" class="w-10 h-10 border-1 rounded-xl bg-white hover:bg-blue-500">3</button>
-        <button class="w-10 h-10 border-1 rounded-xl bg-white hover:bg-blue-500"><i class="fa-solid fa-chevron-right"></i></button>
     </section>
     </main>
     <script src="js/script.js"></script>
+    <script src="js/main-trajets.js"></script>
 </body>
 
 </html>
