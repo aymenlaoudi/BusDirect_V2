@@ -1534,8 +1534,8 @@
       background-color: var(--color-gray-600);
     }
 
-    .hover\:bg-green-700:hover {
-      background-color: var(--color-green-700);
+    .hover\:bg-green-400:hover {
+      background-color: var(--color-green-400);
     }
 
     .hover\:bg-indigo-700:hover {

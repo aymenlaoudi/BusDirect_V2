@@ -9,6 +9,8 @@ fetchData('./data/trips.json')
     trajets.append(numTrips)
     numTrips.textContent = len;
 
+    numTrips.className = "text-xl font-semibold"
+
     const num_passagers = document.getElementById('num_passagers');
     const passagers = document.createElement('span');
     let seatsReserved = 0 ; 
@@ -17,6 +19,7 @@ fetchData('./data/trips.json')
     }
     num_passagers.append(passagers);
     passagers.textContent = seatsReserved
+    passagers.className = "text-xl font-semibold"
 
     const recette = document.getElementById('recette');
     const totalPrice = document.createElement('span');
@@ -28,6 +31,7 @@ fetchData('./data/trips.json')
     }
     recette.append(totalPrice);
     totalPrice.textContent = `${totalMontant} MAD`;
+    totalPrice.className = "text-xl font-semibold"
 
 
     const trajets_complete = document.getElementById('trajets_complete')
@@ -42,6 +46,7 @@ fetchData('./data/trips.json')
     }
     trips_complete.textContent = n
     trajets_complete.append(trips_complete)
+    trips_complete.className = "text-xl font-semibold"
 
     // const card = document.getElementById('card');
     const allcards = document.getElementById('AllCards');
@@ -75,7 +80,7 @@ fetchData('./data/trips.json')
                 disponible.className = "p-2 flex bg-green-200 rounded-2xl"
             }else{
                 disponible.textContent = "complet"
-                disponible.className = "p-2 flex bg-red-200 rounded-2xl"
+                disponible.className = "p-2 flex bg-red-200 rounded-2xl text-gray-500"
             }
         
             let carte = document.createElement('div')
@@ -98,7 +103,7 @@ fetchData('./data/trips.json')
                         <span class="text-xl font-bold text-gray-600">${price} MAD</span>
                     </div>
                     <div class="flex mt-4">
-                    <button type="button" class="bg-blue-400 w-full h-12 rounded-lg hover:bg-blue-700">Reserve un ticket</button>
+                    <button type="button" class="bg-blue-700 w-full h-12 text-white rounded-lg hover:bg-blue-600">Reserve un ticket</button>
                     </div>
             </div>`
 
@@ -116,11 +121,11 @@ search.addEventListener('input',function () {
     currentPage = 1 ;
     renderCards(currentdata)
 })
-// const btns = document.querySelectorAll('#pagination button')
-// btns.forEach(function (btn , index) {
-//     btn.addEventListener('click',function(){
-//         currentPage = index + 1
-//         renderCards(currentdata)
-//     })
-// })  
+const btns = document.querySelectorAll('#pagination button')
+btns.forEach(function (btn , index) {
+    btn.addEventListener('click',function(){
+        currentPage = index + 1
+        renderCards(currentdata)
+    })
+})  
 })
