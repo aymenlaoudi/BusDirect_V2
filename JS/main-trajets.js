@@ -39,7 +39,7 @@ fetchData('./data/trips.json')
         let n = 0;
         for (let i = 0; i < data.length; i++) {
             let complet = data[i].reservations.length
-            console.log(complet);
+            // console.log(complet);
             if (complet == data[i].capacity) {
                 n += 1
             }
@@ -116,11 +116,14 @@ fetchData('./data/trips.json')
         }
         renderCards(data);
         
-
+        // const saved = localStorage.getItem("citySearch")
+        // if(saved){
+        //     search.value = saved
+        // }
 
         search.addEventListener('input', function () {
             let citySearch = search.value.toLowerCase().trim();
-
+            // localStorage.setItem("citySearch",search.value)
             currentdata = data.filter(function (trip) {
                 return trip.departure.toLowerCase().includes(citySearch) || trip.destination.toLowerCase().includes(citySearch)
 
@@ -136,16 +139,23 @@ fetchData('./data/trips.json')
             })
         })
 
-        const tries = document.getElementById('tries')
-        tries.addEventListener('change', function () {
-        currentStatus = tries.value
-        currentPage = 1
-        console.log(currentStatus)
-        // if (choix == 'Tout') {
-        //     renderCards(data.slice(0, 6))
+        // const tries = document.getElementById('tries')
+        // tries.addEventListener('change', function () {
+        // currentStatus = tries.value
+        // currentPage = 1
+        // console.log(currentStatus)
+        // if (currentStatus == 'Tout') {
+        //     renderCards(data.slice(0, 20))
         // }
-        // // else if (choix == 'Disponible')
-        // // }
-        })
+        // else if (currentStatus == 'Disponible'){
+        //     renderCards()
+        // }
+        // })
+
+
+        for(let i=0 ; i < data.length ; i++){
+            console.log(data[i].id)
+            console.log(data[i].reservations)
+        }
 
     })

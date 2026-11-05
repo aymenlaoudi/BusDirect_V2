@@ -16,11 +16,11 @@
             <div class="flex gap-2 items-center">
                 <img src="img/logo.png" alt="logo" class="w-[50px] h-[40px]">
                 <h1 class="text-xl font-bold text-sky-900">
-                    <a href="#bus_direct">BusDirect</a>
+                    <a href="./index.html">BusDirect</a>
                 </h1>
             </div>
             <nav class="flex gap-5 items-center">
-                <a class="text-l font-medium text-cyan-700 hover:text-sky-900" href="#reservation">
+                <a class="text-l font-medium text-cyan-700 hover:text-sky-900" href="./index.html">
                     Reservation
                 </a>
 
@@ -90,7 +90,7 @@
                 <section class="bg-white rounded-2xl shadow-xl p-6 h-fit ">
                     <h2 class="text-lg font-semibold mb-4">Reserver une place</h2>
                     <label for="nameInput" class="block text-sm font-medium rond mb-1">Passager :</label>
-                    <input type="text" id="nameInput" placeholder="e.g. Aymen L"
+                    <input type="text" id="nameInput" placeholder="ex. Aymen L"
                         class="w-full border border-slate-300 rounded-lg p-2 bg-[#F0F4FF] px-3 py-2 mb-4 ">
                     <div>
                         <label for="" class="block text-sm font-medium mb-1 rond">Choisir un siège</label>
@@ -151,10 +151,23 @@
                     </div>
                     <p id="supMessage" class="mt-4 text-sm font-medium"></p>
                 </section>
+            
+            <section id="liste_attente">
+                    <!-- <h2 class="text-lg font-semibold">Liste d'attente</h2>
+                    <label for="passager_attente" class="block text-sm font-medium rond">Passager :</label>
+                    <input type="text" id="passager_attente" placeholder="ex. Aymen L"
+                        class="w-full border border-slate-300 rounded-lg p-2 bg-[#F0F4FF] px-3 py-2">
+                    <label for="numero_tel" class="block text-sm font-medium rond">Numero tel :</label>
+                    <input type="number" id="numero_tel" placeholder="ex. 06 XX XX XX XX"
+                        class="w-full border border-slate-300 rounded-lg p-2 bg-[#F0F4FF] px-3 py-2">
+                    <button type="button" id="btn_attente"
+                        class="border-1 px-3 py-2 rounded-xl bg-[#0039A6] text-white">Confirmer</button>
+                    <p id="message" class="mt-4 text-sm font-medium"></p>              -->
+            </section>
             </div>
         </div>
     </main>
-    <script src="js/script.js"></script>
+    <script type="module" src="js/main-cabine.js"></script>
 </body>
 
 </html>
