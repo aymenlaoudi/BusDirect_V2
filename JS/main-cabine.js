@@ -85,10 +85,10 @@ function showMessage(element, text, isError) {
     } else {
         element.className = "mt-4 text-sm font-medium text-green-700";
     }
-    // clearTimeout(element.timer);
-    // element.timer = setTimeout(function () {
-    //     element.textContent = "";
-    // }, 3000);
+    clearTimeout(element.timer);
+    element.timer = setTimeout(function () {
+        element.textContent = "";
+    }, 3000);
 }
 
 function markSeatAsReserved(seatNumber, name) {
@@ -145,11 +145,6 @@ function reserveSeat() {
     if(seatInput.value === ""){
         seatNumber = findFreeSeat();
     }
-
-    // if(seatNumber === null){
-    //     showMessage(message, "Aucun siège libre",true)
-    //     return;
-    // }
 
     if (!Number.isInteger(seatNumber) || seatNumber < 1 || seatNumber > totalSeats) {
         showMessage(message, "Please enter a seat number between 1 and " + totalSeats + ".", true);
