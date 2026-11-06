@@ -443,6 +443,9 @@
   .mb-6 {
     margin-bottom: calc(var(--spacing) * 6);
   }
+  .mb-20 {
+    margin-bottom: calc(var(--spacing) * 20);
+  }
 
   .ml-3 {
     margin-left: calc(var(--spacing) * 3);
@@ -574,6 +577,9 @@
 
   .h-\[60px\] {
     height: 60px;
+  }
+  .h-\[200px\] {
+    height: 200px;
   }
 
   .h-auto {
@@ -1400,8 +1406,8 @@
     color: var(--color-gray-500);
   }
 
-  .text-gray-800 {
-    color: var(--color-gray-800);
+  .text-gray-600 {
+    color: var(--color-gray-600);
   }
 
   .text-green-600 {
@@ -1528,8 +1534,8 @@
       background-color: var(--color-gray-600);
     }
 
-    .hover\:bg-green-700:hover {
-      background-color: var(--color-green-700);
+    .hover\:bg-green-400:hover {
+      background-color: var(--color-green-400);
     }
 
     .hover\:bg-indigo-700:hover {
