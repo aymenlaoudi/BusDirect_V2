@@ -1,5 +1,5 @@
 import { fetchData } from "./store.js";
-
+import { numValid } from "./validators.js";
 fetchData('./data/trips.json')
     .then(data => {
 
@@ -20,10 +20,13 @@ const modifyNameInput = document.getElementById("modifyNameInput");
 const newSeatInput = document.getElementById("newSeat");
 const modifyButton = document.getElementById("modifyBtn");
 const modifyMessage = document.getElementById("modifyMessage");
+const modifyNum = document.getElementById('modify_num');
 
 const supSelect = document.getElementById("supSelect");
 const supBtn = document.getElementById("supBtn");
 const supMessage = document.getElementById("supMessage");
+
+const phoneInput = document.getElementById('num_tel');
 
 const freeSeatStyle =
     "flex flex-col items-center justify-center rounded-xl border border-slate-200 bg-white text-slate-500 py-4 cursor-pointer hover:border-green-500";
@@ -102,7 +105,7 @@ function fillNameBox() {
 
 function reserveSeat() {
     const name = nameInput.value.trim();
-    const seatNumber = Number(seatInput.value);
+    let seatNumber = Number(seatInput.value);
     const names = Object.values(reservations).includes(name);
 
     if (name === "") {
@@ -115,7 +118,16 @@ function reserveSeat() {
         return;
     }
 
-    if (seatInput.value === "" || !Number.isInteger(seatNumber) || seatNumber < 1 || seatNumber > totalSeats) {
+    // if(seatInput.value === ""){
+    //     seatNumber = findFreeSeat();
+    // }
+
+    // if(seatNumber === null){
+    //     showMessage(message, "Aucun siège libre")
+    //     return;
+    // }
+
+    if (!Number.isInteger(seatNumber) || seatNumber < 1 || seatNumber > totalSeats) {
         showMessage(message, "Please enter a seat number between 1 and " + totalSeats + ".", true);
         return;
     }
@@ -123,6 +135,11 @@ function reserveSeat() {
     if (reservations[seatNumber] !== undefined) {
         showMessage(message, "Seat " + seatNumber + " is already reserved by " + reservations[seatNumber] + ".", true);
         return;
+    }
+
+    if (!numValid(phoneInput.value)){
+    showMessage(message, "Numero invalid (ex: 06 12 34 56 78)",true)
+    return;
     }
 
     markSeatAsReserved(seatNumber, name);
@@ -182,6 +199,11 @@ function modifyReservation() {
 
     if (newSeat === oldSeat && newName === reservations[oldSeat]) {
         showMessage(modifyMessage, "Nothing to change: same name and same seat.", true);
+        return;
+    }
+
+    if (!numValid(modifyNum.value)){
+        showMessage(modifyMessage, "Numero invalid (ex: 06 12 34 56 78)",true)
         return;
     }
 
@@ -276,5 +298,15 @@ for (let i = 0; i < trip.reservations.length; i++) {
     seatCounter();
     prixCounter();    
 }
+
+// function findFreeSeat() {
+//     for (let i = 5; i < totalSeats ; i++) {
+//         if (reservations[i] === undefined){
+//             return i ;
+//         }
+//     }
+//     return null
+// }
+
 
 })
