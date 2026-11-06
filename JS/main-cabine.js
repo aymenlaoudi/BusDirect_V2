@@ -297,11 +297,11 @@ places.textContent = totalSeats - Object.keys(reservations).length + "/" + total
 function seatCounter() {
     const disp_seats = totalSeats - Object.keys(reservations).length;
     places.textContent = disp_seats + "/20";
-    // if (disp_seats === 0) {
-    //     reserveButton.textContent = "Ajouter à la liste d'attente";
-    // } else {
-    //     reserveButton.textContent = "Confirmer";
-    // }
+    if (disp_seats === 0) {
+        reserveButton.textContent = "Ajouter à la liste d'attente";
+    } else {
+        reserveButton.textContent = "Confirmer";
+    }
 }
 
 
@@ -342,28 +342,28 @@ function save() {
 // })
 const waitBody = document.getElementById("waitBody");
 
-// function renderWaitingList() {
-//     waitBody.innerHTML = "";
+function renderWaitingList() {
+    waitBody.innerHTML = "";
 
-//     for (let i = 0; i < trip.waitingList.length; i++) {
-//         const person = trip.waitingList[i];
+    for (let i = 0; i < trip.waitingList.length; i++) {
+        const person = trip.waitingList[i];
 
-//         const tr = document.createElement("tr");
-//         tr.innerHTML =
-//             "<td class='p-2'>" + (i + 1) + "</td>" +
-//             "<td class='p-2'>" + person.name + "</td>" +
-//             "<td class='p-2'>" + person.phone + "</td>";
+        const tr = document.createElement("tr");
+        tr.innerHTML =
+            "<td class='p-2'>" + (i + 1) + "</td>" +
+            "<td class='p-2'>" + person.name + "</td>" +
+            "<td class='p-2'>" + person.phone + "</td>";
 
-//         waitBody.appendChild(tr);
-//     }
-// }
+        waitBody.appendChild(tr);
+    }
+}
 for (let i = 0; i < trip.reservations.length; i++) {
     const r = trip.reservations[i];
     markSeatAsReserved(r.seat , r.name)
 }
 seatCounter();
 prixCounter();    
-// renderWaitingList();
+renderWaitingList();
 
 function findFreeSeat() {
     for (let i = 5; i <= totalSeats ; i++) {
