@@ -118,14 +118,14 @@ function reserveSeat() {
         return;
     }
 
-    // if(seatInput.value === ""){
-    //     seatNumber = findFreeSeat();
-    // }
+    if(seatInput.value === ""){
+        seatNumber = findFreeSeat();
+    }
 
-    // if(seatNumber === null){
-    //     showMessage(message, "Aucun siège libre")
-    //     return;
-    // }
+    if(seatNumber === null){
+        showMessage(message, "Aucun siège libre")
+        return;
+    }
 
     if (!Number.isInteger(seatNumber) || seatNumber < 1 || seatNumber > totalSeats) {
         showMessage(message, "Please enter a seat number between 1 and " + totalSeats + ".", true);
@@ -299,14 +299,14 @@ for (let i = 0; i < trip.reservations.length; i++) {
     prixCounter();    
 }
 
-// function findFreeSeat() {
-//     for (let i = 5; i < totalSeats ; i++) {
-//         if (reservations[i] === undefined){
-//             return i ;
-//         }
-//     }
-//     return null
-// }
+function findFreeSeat() {
+    for (let i = 5; i < totalSeats ; i++) {
+        if (reservations[i] === undefined){
+            return i ;
+        }
+    }
+    return null
+}
 
 
 })
