@@ -43,15 +43,13 @@
                     </div>
                     <div>
                         <p class="text-xs font-medium uppercase tracking-wide text-slate-400">Trajet</p>
-                        <h2 class="text-xl font-semibold text-slate-800 sm:text-2xl">
-                            Safi → Marrakech
+                        <h2 id="tripTitle" class="text-xl font-semibold text-slate-800 sm:text-2xl"></h2>
                         </h2>
                     </div>
                 </div>
 
-                <span class="rounded-xl bg-sky-50 px-4 py-1 text-sm font-semibold text-sky-700 ring-1 ring-sky-100">
-                    80 DH / place
-                </span>
+                <span id="tripPrice"
+                    class="rounded-xl bg-sky-50 px-4 py-1 text-sm font-semibold text-sky-700 ring-1 ring-sky-100"></span>
 
             </div>
 
@@ -82,10 +80,23 @@
 
 
         <div class="page">
+            <div>
             <section class="bg-blue-50 rounded-2xl shadow-xl p-4">
                 <div class="bg-white rounded-xl p-3 mb-4 font-medium">Driver 🧑‍✈️</div>
                 <div id="seatGrid" class="grid grid-cols-[1fr_1fr_0.3fr_1fr_1fr] gap-2"></div>
             </section>
+            <h3 class="text-lg font-semibold mt-6 mb-2">Liste d'attente</h3>
+            <table class="w-full text-sm bg-white rounded-xl">
+                <thead>
+                    <tr class="text-left">
+                        <th class="p-2">#</th>
+                        <th class="p-2">Nom</th>
+                        <th class="p-2">Téléphone</th>
+                    </tr>
+                </thead>
+                <tbody id="waitBody"></tbody>
+            </table>
+            </div>
             <div class="forms">
                 <section class="bg-white rounded-2xl shadow-xl p-6 h-fit ">
                     <h2 class="text-lg font-semibold mb-4">Reserver une place</h2>
@@ -98,16 +109,14 @@
                             <input type="text" id="seatInput" placeholder="-- N° de Siège --"
                                 class="w-full border border-slate-300 rounded-lg p-2 bg-[#F0F4FF] px-3 py-2 mb-4">
                         </div>
-                    <div>
                         <label for="num_tel" class="block text-sm font-medium rond mb-1">Numero de telephone :</label>
-                        <div class="flex items-center gap-4 justify-between">
-                            <input type="number" id="num_tel" placeholder="06 xx xx xx xx"
-                        class="w-full border border-slate-300 rounded-lg p-2 bg-[#F0F4FF] px-3 py-2">
+                        <input type="number" id="num_tel" placeholder="06 xx xx xx xx"
+                            class="w-full border border-slate-300 rounded-lg p-2 bg-[#F0F4FF] px-3 py-2">
+                        <div class="mt-4">
                             <button type="button" id="reserveButton"
-                                class="border-1 px-3 py-2 rounded-xl bg-[#0039A6] text-white">Confirmer</button>
+                                class="w-full border-1 px-3 py-2 rounded-xl bg-[#0039A6] text-white">Confirmer</button>
                         </div>
-                    </div>
-                    <p id="message" class="mt-4 text-sm font-medium"></p>
+                        <p id="message" class="mt-4 text-sm font-medium"></p>
                 </section>
 
                 <section
@@ -127,9 +136,10 @@
                             class="w-full border border-slate-300 rounded-lg p-2 bg-[#F0F4FF] px-3 py-2">
                     </div>
                     <div>
-                        <label for="modify_num" class="block text-sm font-medium rond mb-1">Numero de telephone :</label>
+                        <label for="modify_num" class="block text-sm font-medium rond mb-1">Numero de telephone
+                            :</label>
                         <input type="number" id="modify_num" placeholder="06 xx xx xx xx"
-                        class="w-full border border-slate-300 rounded-lg p-2 bg-[#F0F4FF] px-3 py-2">
+                            class="w-full border border-slate-300 rounded-lg p-2 bg-[#F0F4FF] px-3 py-2">
                     </div>
                     <div>
                         <label for="newSeat" class="block text-sm font-medium mb-1 rond">Nouveau siège</label>
@@ -162,9 +172,9 @@
                     </div>
                     <p id="supMessage" class="mt-4 text-sm font-medium"></p>
                 </section>
-            
-            <!-- <section id="liste_attente" class="flex shadow-xl w-full rounded-xl gap-3 p-4 flex-wrap flex-col bg-white shadow-sm p-4 pb-7 "> -->
-                    <!-- <h2 class="text-lg font-semibold">Liste d'attente</h2>
+
+                <!-- <section id="liste_attente" class="flex shadow-xl w-full rounded-xl gap-3 p-4 flex-wrap flex-col bg-white shadow-sm p-4 pb-7 "> -->
+                <!-- <h2 class="text-lg font-semibold">Liste d'attente</h2>
                     <label for="passager_attente" class="block text-sm font-medium rond">Passager :</label>
                     <input type="text" id="passager_attente" placeholder="ex. Aymen L"
                         class="w-full border border-slate-300 rounded-lg p-2 bg-[#F0F4FF] px-3 py-2">
@@ -174,7 +184,7 @@
                     <button type="button" id="btn_attente"
                         class="border-1 px-3 py-2 rounded-xl bg-[#0039A6] text-white">Confirmer</button>
                     <p id="message" class="mt-4 text-sm font-medium"></p>              -->
-            <!-- </section> -->
+                <!-- </section> -->
             </div>
         </div>
     </main>

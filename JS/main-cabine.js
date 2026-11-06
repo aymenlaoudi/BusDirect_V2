@@ -75,6 +75,9 @@ const params = new URLSearchParams(window.location.search)
 const tripId =Number(params.get("id"))
 const trip = data.find(t => t.id === tripId)
 
+document.getElementById("tripTitle").textContent = trip.departure + " → " + trip.destination;
+document.getElementById("tripPrice").textContent = trip.price + " DH / place";
+
 function showMessage(element, text, isError) {
     element.textContent = text;
     if (isError) {
@@ -82,6 +85,10 @@ function showMessage(element, text, isError) {
     } else {
         element.className = "mt-4 text-sm font-medium text-green-700";
     }
+    // clearTimeout(element.timer);
+    // element.timer = setTimeout(function () {
+    //     element.textContent = "";
+    // }, 3000);
 }
 
 function markSeatAsReserved(seatNumber, name) {
@@ -104,6 +111,23 @@ function fillNameBox() {
 }
 
 function reserveSeat() {
+    if (Object.keys(reservations).length === totalSeats) {
+    const waitName = nameInput.value.trim();
+    if (waitName === "") {
+        showMessage(message, "Please enter your name.", true);
+        return;
+    }
+    if (!numValid(phoneInput.value)) {
+        showMessage(message, "Numero invalid (ex: 06 12 34 56 78)", true);
+        return;
+    }
+    trip.waitingList.push({ name: waitName, phone: phoneInput.value });
+    renderWaitingList();
+    showMessage(message, waitName + " est en position " + trip.waitingList.length + ".", false);
+    nameInput.value = "";
+    phoneInput.value = "";
+    return;
+    }
     const name = nameInput.value.trim();
     let seatNumber = Number(seatInput.value);
     const names = Object.values(reservations).includes(name);
@@ -122,10 +146,10 @@ function reserveSeat() {
         seatNumber = findFreeSeat();
     }
 
-    if(seatNumber === null){
-        showMessage(message, "Aucun siège libre")
-        return;
-    }
+    // if(seatNumber === null){
+    //     showMessage(message, "Aucun siège libre",true)
+    //     return;
+    // }
 
     if (!Number.isInteger(seatNumber) || seatNumber < 1 || seatNumber > totalSeats) {
         showMessage(message, "Please enter a seat number between 1 and " + totalSeats + ".", true);
@@ -209,6 +233,9 @@ function modifyReservation() {
 
     markSeatAsFree(oldSeat);
     markSeatAsReserved(newSeat, newName);
+    seatCounter();
+    prixCounter();
+
     showMessage(modifyMessage, newName + " is now in seat " + newSeat + ".", false);
 
     modifyNameInput.value = "";
@@ -252,6 +279,12 @@ function deleteReservation() {
     const name = reservations[seatNumber];
 
     markSeatAsFree(seatNumber);
+    if (trip.waitingList.length > 0 && Number(seatNumber) > 4) {
+    const first = trip.waitingList[0];
+    trip.waitingList.splice(0, 1);
+    markSeatAsReserved(seatNumber, first.name);
+    renderWaitingList();
+    }
     showMessage(supMessage, name + " (seat " + seatNumber + ") has been deleted.", false);
     seatCounter();
     prixCounter();
@@ -264,14 +297,30 @@ places.textContent = totalSeats - Object.keys(reservations).length + "/" + total
 function seatCounter() {
     const disp_seats = totalSeats - Object.keys(reservations).length;
     places.textContent = disp_seats + "/20";
+    // if (disp_seats === 0) {
+    //     reserveButton.textContent = "Ajouter à la liste d'attente";
+    // } else {
+    //     reserveButton.textContent = "Confirmer";
+    // }
 }
 
-prix.textContent = Object.keys(reservations).length * 80 + " DH";
+
 function prixCounter() {
-    const price = Object.keys(reservations).length * 80;
-    console.log(price);
-    prix.textContent = price + " DH";
+    let total = 0;
+    for (let seat in reservations) {
+        total += getSeatPrice(Number(seat));
+    }
+    prix.textContent = total + " DH";
 }
+
+function getSeatPrice(seatNumber) {
+    if (seatNumber <= 4) {
+        return Math.round(trip.price * 1.1);
+    }
+    return trip.price;
+}
+
+
 // reservations = JSON.parse(localStorage.getItem('reservations')||'{}');
 function save() {
     localStorage.setItem("reservations", JSON.stringify(reservations));
@@ -291,16 +340,33 @@ function save() {
 // numero_tel.addEventListener('input',function() {
 //     console.log(numero_tel.value)
 // })
+const waitBody = document.getElementById("waitBody");
 
+// function renderWaitingList() {
+//     waitBody.innerHTML = "";
+
+//     for (let i = 0; i < trip.waitingList.length; i++) {
+//         const person = trip.waitingList[i];
+
+//         const tr = document.createElement("tr");
+//         tr.innerHTML =
+//             "<td class='p-2'>" + (i + 1) + "</td>" +
+//             "<td class='p-2'>" + person.name + "</td>" +
+//             "<td class='p-2'>" + person.phone + "</td>";
+
+//         waitBody.appendChild(tr);
+//     }
+// }
 for (let i = 0; i < trip.reservations.length; i++) {
     const r = trip.reservations[i];
     markSeatAsReserved(r.seat , r.name)
-    seatCounter();
-    prixCounter();    
 }
+seatCounter();
+prixCounter();    
+// renderWaitingList();
 
 function findFreeSeat() {
-    for (let i = 5; i < totalSeats ; i++) {
+    for (let i = 5; i <= totalSeats ; i++) {
         if (reservations[i] === undefined){
             return i ;
         }

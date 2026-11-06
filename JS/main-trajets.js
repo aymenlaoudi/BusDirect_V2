@@ -26,9 +26,17 @@ fetchData('./data/trips.json')
         let totalMontant = 0;
 
         for (let i = 0; i < data.length; i++) {
-            let montant = data[i].price
-            totalMontant += montant * data[i].reservations.length;
+            const trip = data[i];
+        for (let j = 0; j < trip.reservations.length; j++) {
+            const seat = trip.reservations[j].seat;
+                if (seat <= 4) {
+                    totalMontant += Math.round(trip.price * 1.1);
+                } else {
+                    totalMontant += trip.price;
+                }
+            }
         }
+        
         recette.append(totalPrice);
         totalPrice.textContent = `${totalMontant} MAD`;
         totalPrice.className = "text-xl font-semibold"
@@ -66,6 +74,11 @@ fetchData('./data/trips.json')
             let endIndex = startIndex + cardsPerPage
 
             const pageTrips = data.slice(startIndex, endIndex);
+
+            if (pageTrips.length === 0) {
+                allcards.innerHTML = "<div style='grid-column: 1 / -1' class='bg-white rounded-xl shadow-xl p-8 text-center text-3xl font-bold text-gray-500'>Trajet introuvable</div>";
+                 return;
+            }
 
             for (let i = 0; i < pageTrips.length; i++) {
                 let departure = pageTrips[i].departure
