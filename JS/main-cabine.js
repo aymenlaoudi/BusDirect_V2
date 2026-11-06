@@ -67,9 +67,10 @@ function createSeats() {
     }
 }
 
-// const params = new URLSearchParams(window.location.search)
-// const tripId =Number(params.get("id"))
-// const trip = data.find(t => t.id === tripId)
+
+const params = new URLSearchParams(window.location.search)
+const tripId =Number(params.get("id"))
+const trip = data.find(t => t.id === tripId)
 
 function showMessage(element, text, isError) {
     element.textContent = text;
@@ -269,11 +270,11 @@ function save() {
 //     console.log(numero_tel.value)
 // })
 
-// for (let i = 0; i < trip.reservations.length; i++) {
-//     const r = trip.reservations[i];
-//     markSeatAsReserved(r.seat , r.name)
-//     seatCounter();
-//     prixCounter();    
-// }
+for (let i = 0; i < trip.reservations.length; i++) {
+    const r = trip.reservations[i];
+    markSeatAsReserved(r.seat , r.name)
+    seatCounter();
+    prixCounter();    
+}
 
 })

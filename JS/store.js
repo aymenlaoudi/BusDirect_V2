@@ -5,3 +5,7 @@ export function fetchData(url) {
             return data
         })
 }
+
+
+// LOCAL STORAGE
+// FONCTION KATJIB RESERVATIONS MN LOCAL STORAGE

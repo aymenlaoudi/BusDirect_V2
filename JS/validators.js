@@ -1,0 +1,6 @@
+
+// VALIDATIONS LI KAYNA F RESERVE SEAT & MODIFY SEAT & SUP SEAT
+
+// Chno kaychecki
+
+
