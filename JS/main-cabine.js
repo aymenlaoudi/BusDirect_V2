@@ -49,10 +49,10 @@ function createSeats() {
         label.textContent = "Free";
 
 
-        // if(i <= 4){
-        //     seat.style.borderColor = "orange"
-        //     label.textContent = "VIP"
-        // }
+        if(i <= 4){
+            seat.style.borderColor = "orange"
+            label.textContent = "VIP"
+        }
 
         seatGrid.append(seat);
         seat.append(number);
