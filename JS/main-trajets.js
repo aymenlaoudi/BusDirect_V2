@@ -27,8 +27,8 @@ fetchData('./data/trips.json')
 
         for (let i = 0; i < data.length; i++) {
             const trip = data[i];
-        for (let j = 0; j < trip.reservations.length; j++) {
-            const seat = trip.reservations[j].seat;
+            for (let j = 0; j < trip.reservations.length; j++) {
+                const seat = trip.reservations[j].seat;
                 if (seat <= 4) {
                     totalMontant += Math.round(trip.price * 1.1);
                 } else {
@@ -36,7 +36,7 @@ fetchData('./data/trips.json')
                 }
             }
         }
-        
+
         recette.append(totalPrice);
         totalPrice.textContent = `${totalMontant} MAD`;
         totalPrice.className = "text-xl font-semibold"
@@ -76,7 +76,7 @@ fetchData('./data/trips.json')
 
             if (pageTrips.length === 0) {
                 allcards.innerHTML = "<div style='grid-column: 1 / -1' class='bg-white rounded-xl shadow-xl p-8 text-center text-3xl font-bold text-gray-500'>Trajet introuvable</div>";
-                 return;
+                return;
             }
 
             for (let i = 0; i < pageTrips.length; i++) {
@@ -127,22 +127,34 @@ fetchData('./data/trips.json')
             }
         }
         renderCards(data);
-        
+
         // const saved = localStorage.getItem("citySearch")
         // if(saved){
         //     search.value = saved
         // }
 
-        search.addEventListener('input', function () {
-            let citySearch = search.value.toLowerCase().trim();
-            // localStorage.setItem("citySearch",search.value)
-            currentdata = data.filter(function (trip) {
-                return trip.departure.toLowerCase().includes(citySearch) || trip.destination.toLowerCase().includes(citySearch)
+        const tries = document.getElementById('tries');
 
-            })
+        function filterTrips() {
+            const city = search.value.toLowerCase().trim();
+            const status = tries.value;
+
+            currentdata = data.filter(function (trip) {
+                const okCity = trip.departure.toLowerCase().includes(city) || trip.destination.toLowerCase().includes(city);
+                const full = trip.reservations.length === trip.capacity;
+
+                if (status === "Disponible" && full) return false;
+                if (status === "Complete" && !full) return false;
+                return okCity;
+            });
+
             currentPage = 1;
-            renderCards(currentdata)
-        })
+            renderCards(currentdata);
+        }
+
+        search.addEventListener('input', filterTrips);
+        tries.addEventListener('change', filterTrips);
+
         const btns = document.querySelectorAll('#pagination button')
         btns.forEach(function (btn, index) {
             btn.addEventListener('click', function () {
@@ -165,7 +177,7 @@ fetchData('./data/trips.json')
         // })
 
 
-        for(let i=0 ; i < data.length ; i++){
+        for (let i = 0; i < data.length; i++) {
             console.log(data[i].id)
             console.log(data[i].reservations)
         }
