@@ -321,20 +321,7 @@ function save() {
     localStorage.setItem("reservations", JSON.stringify(reservations));
 }
 
-// const passager_attente = document.getElementById('passager_attente')
-// const numero_tel = document.getElementById('numero_tel')
 
-// const show_passager_name = document.createElement('span')
-// const show_passager = document.getElementById('show_passager')
-// show_passager.append(show_passager_name)
-
-// passager_attente.addEventListener('input',function(){
-//     show_passager_name.textContent = passager_attente.value
-// })
-
-// numero_tel.addEventListener('input',function() {
-//     console.log(numero_tel.value)
-// })
 const waitBody = document.getElementById("waitBody");
 
 function renderWaitingList() {

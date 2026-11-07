@@ -47,7 +47,6 @@ fetchData('./data/trips.json')
         let n = 0;
         for (let i = 0; i < data.length; i++) {
             let complet = data[i].reservations.length
-            // console.log(complet);
             if (complet == data[i].capacity) {
                 n += 1
             }
