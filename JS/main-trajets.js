@@ -1,6 +1,6 @@
-import { fetchData } from "./store.js";
+import { loadTrips } from "./store.js";
 
-fetchData('./data/trips.json')
+loadTrips()
     .then(data => {
 
         const trajets = document.getElementById('trajets');
@@ -55,7 +55,6 @@ fetchData('./data/trips.json')
         trajets_complete.append(trips_complete)
         trips_complete.className = "text-xl font-semibold"
 
-        // const card = document.getElementById('card');
         const allcards = document.getElementById('AllCards');
         const search = document.getElementById('search');
 
@@ -128,11 +127,6 @@ fetchData('./data/trips.json')
         }
         renderCards(data);
 
-        // const saved = localStorage.getItem("citySearch")
-        // if(saved){
-        //     search.value = saved
-        // }
-
         const tries = document.getElementById('tries');
 
         function filterTrips() {
@@ -162,24 +156,5 @@ fetchData('./data/trips.json')
                 renderCards(currentdata)
             })
         })
-
-        // const tries = document.getElementById('tries')
-        // tries.addEventListener('change', function () {
-        // currentStatus = tries.value
-        // currentPage = 1
-        // console.log(currentStatus)
-        // if (currentStatus == 'Tout') {
-        //     renderCards(data.slice(0, 20))
-        // }
-        // else if (currentStatus == 'Disponible'){
-        //     renderCards()
-        // }
-        // })
-
-
-        for (let i = 0; i < data.length; i++) {
-            console.log(data[i].id)
-            console.log(data[i].reservations)
-        }
 
     })

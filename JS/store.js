@@ -6,6 +6,17 @@ export function fetchData(url) {
         })
 }
 
+export function loadTrips() {
+    const saved = localStorage.getItem("trips");
+    if (saved) {
+        return Promise.resolve(JSON.parse(saved));
+    }
+    return fetchData('./data/trips.json');
+}
+
+export function saveTrips(trips) {
+    localStorage.setItem("trips", JSON.stringify(trips));
+}
 
 // LOCAL STORAGE
 // FONCTION KATJIB RESERVATIONS MN LOCAL STORAGE

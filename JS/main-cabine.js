@@ -1,5 +1,7 @@
 import { fetchData } from "./store.js";
 import { numValid } from "./validators.js";
+import { loadTrips, saveTrips } from "./store.js";
+
 fetchData('./data/trips.json')
     .then(data => {
 
@@ -169,6 +171,7 @@ function reserveSeat() {
     seatInput.value = "";
 
     save();
+    return;
 }
 
 createSeats();
@@ -315,10 +318,12 @@ function getSeatPrice(seatNumber) {
     return trip.price;
 }
 
-
-// reservations = JSON.parse(localStorage.getItem('reservations')||'{}');
 function save() {
-    localStorage.setItem("reservations", JSON.stringify(reservations));
+    trip.reservations = [];
+    for (let seat in reservations) {
+        trip.reservations.push({ seat: Number(seat), name: reservations[seat] });
+    }
+    saveTrips(data);
 }
 
 
